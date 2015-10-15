@@ -27,7 +27,7 @@ void setup() {
 
   // set initial position of the cactus
   x1 = 900; // position it off-screen on the right
-  x2 = 1000;
+  x2 = 1800;
 
   // initial horizontal acceleration for cactus
   a1 = -0.1;
@@ -45,7 +45,7 @@ void setup() {
 
   // set dino initial acceleration
   dinoA = 0;
-  
+
   // set gravity 
   gravity = 0.07;
 }
@@ -82,7 +82,7 @@ void draw() {
   b1=170-dinoY;
   a6=x2-50;
   a5=x1-50;
-  
+
   c1=sq(a5)+sq(b1);
   c2=sq(a6)+sq(b1);
   line1=sqrt(c1);
@@ -91,90 +91,95 @@ void draw() {
   text("dinoY is " + dinoY, 150, 25);
   text("dinoS is " + dinoS, 150, 50);
   text("dinoA is " + dinoA, 150, 75);
-   text("line1 is " + line1, 150, 100);
-   text("line2 is " + line2, 150, 120);
-  
+  text("line1 is " + line1, 150, 100);
+  text("line2 is " + line2, 150, 120);
+
   // move the dino
   dinoA = dinoA + gravity; // changes acceleration based on gravity
   dinoS = dinoS + dinoA; // change speed based on acceleration 
   dinoY = dinoY + dinoS; // change location based on speed
-  
+
   // stop the dino if it hits the ground
   if (dinoY > 170) { // bottome of the screen (200) minus the radius 
-  dinoA = 0;
-  dinoS = 0;
-  dinoY = 170;
+    dinoA = 0;
+    dinoS = 0;
+    dinoY = 170;
   }
 
   // draw the dino 
   ellipse(50, dinoY, 50, 50);
   fill(0);
-  if(line1<45){
+  if (line1<45) {
     a1=0;
     a2=0;
     s1=0;
     s2=0;
   }
-   if(line2<45){
+  if (line2<45) {
     a1=0;
     a2=0;
     s1=0;
     s2=0;
   }
-
 }
-void mouseClicked(){
+void mouseClicked() {
   mouseClicked++;
-  if (mouseClicked==1){
-  x1 = 900; // position it off-screen on the right
-  x2 = 1000;
+  if (mouseClicked==1) {
+    x1 = 900; // position it off-screen on the right
+    x2 = 1800;
 
-  // initial horizontal acceleration for cactus
-  a1 = -0.1;
-  a2 = -0.1;
+    // initial horizontal acceleration for cactus
+    a1 = -0.1;
+    a2 = -0.1;
 
-  // initial horizontal speed for cactus
-  s1 = -1;
-  s2 = -1;
-
-
-  dinoY = 170;
+    // initial horizontal speed for cactus
+    s1 = -1;
+    s2 = -1;
 
 
-  dinoS = 0;
+    dinoY = 170;
 
- 
-  dinoA = 0;
-  
 
-  gravity = 0.07;
-}else if (mouseClicked>1){
-   x1 = 900; // position it off-screen on the right
-  x2 = 1000;
+    dinoS = 0;
 
-  // initial horizontal acceleration for cactus
-  a1 = -0.1;
-  a2 = -0.1;
 
-  // initial horizontal speed for cactus
-  s1 = -1;
-  s2 = -1;
+    dinoA = 0;
 
-  // set dino initial vertical position
-  dinoY = 170;
 
-  // set dino initial speed
-  dinoS = 0;
+    gravity = 0.07;
+  } else if (mouseClicked>1) {
+    x1 = 900; // position it off-screen on the right
+    x2 = 1800;
 
-  // set dino initial acceleration
-  dinoA = 0;
-  
-  // set gravity 
-  gravity = 0.07;
-}}
-// respond to keypress
-void keyPressed(){
-  if(dinoY==170){
-  dinoA = -1;
+    // initial horizontal acceleration for cactus
+    a1 = -0.1;
+    a2 = -0.1;
+
+    // initial horizontal speed for cactus
+    s1 = -1;
+    s2 = -1;
+
+    // set dino initial vertical position
+    dinoY = 170;
+
+    // set dino initial speed
+    dinoS = 0;
+
+    // set dino initial acceleration
+    dinoA = 0;
+
+    // set gravity 
+    gravity = 0.07;
   }
+}
+
+// respond to keypress
+void keyPressed() {
+
+    if (key == ' ') {
+      if (dinoY==170) {
+        dinoA = -1;
+      }
+    }
+ 
 }
