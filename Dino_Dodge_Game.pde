@@ -11,8 +11,14 @@ float s2; // tracks the speed of the second cactus
 float dinoY; // tracks position of dino
 float dinoS; // tracks speed of dino
 float dinoA; // tracks acceleration of dino
-float gravity = 0.005; // gravity
-
+float gravity; // gravity
+float c1;
+float c2;
+float line1;
+float line2;
+float a5;
+float a6;
+float b1;
 // this function runs once only
 void setup() {
   // draw the canvas 
@@ -38,6 +44,9 @@ void setup() {
 
   // set dino initial acceleration
   dinoA = 0;
+  
+  // set gravity 
+  gravity = 0.07;
 }
 
 // this function runs repeatedly 
@@ -47,9 +56,9 @@ void draw() {
 
   // draw a circle at bottom right corner of the screen
   //       x    y   w   h
-  ellipse(x1, 175, 35, 35);
+  ellipse(x1, 175, 40, 40);
   fill(0);
-  ellipse(x2, 175, 35, 35);
+  ellipse(x2, 175, 40, 40);
   fill(255, 0, 0);
 
   // change the speed
@@ -69,11 +78,20 @@ void draw() {
     x2 = 1000;
     s2 = -1;
   }
+  b1=170-dinoY;
+  a6=x2-50;
+  a5=x1-50;
   
+  c1=sq(a5)+sq(b1);
+  c2=sq(a6)+sq(b1);
+  line1=sqrt(c1);
+  line2=sqrt(c2);
   // status updates
   text("dinoY is " + dinoY, 150, 25);
   text("dinoS is " + dinoS, 150, 50);
   text("dinoA is " + dinoA, 150, 75);
+   text("line1 is " + line1, 150, 100);
+   text("line2 is " + line2, 150, 120);
   
   // move the dino
   dinoA = dinoA + gravity; // changes acceleration based on gravity
@@ -88,8 +106,21 @@ void draw() {
   }
 
   // draw the dino 
-  ellipse(50, dinoY, 35, 35);
+  ellipse(50, dinoY, 50, 50);
   fill(0);
+  if(line1<45){
+    a1=0;
+    a2=0;
+    s1=0;
+    s2=0;
+  }
+   if(line2<45){
+    a1=0;
+    a2=0;
+    s1=0;
+    s2=0;
+  }
+
 }
 
 // respond to keypress
