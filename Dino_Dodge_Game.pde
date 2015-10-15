@@ -19,6 +19,7 @@ float line2;
 float a5;
 float a6;
 float b1;
+int mouseClicked;
 // this function runs once only
 void setup() {
   // draw the canvas 
@@ -122,11 +123,58 @@ void draw() {
   }
 
 }
+void mouseClicked(){
+  mouseClicked++;
+  if (mouseClicked==1){
+  x1 = 900; // position it off-screen on the right
+  x2 = 1000;
 
+  // initial horizontal acceleration for cactus
+  a1 = -0.1;
+  a2 = -0.1;
+
+  // initial horizontal speed for cactus
+  s1 = -1;
+  s2 = -1;
+
+
+  dinoY = 170;
+
+
+  dinoS = 0;
+
+ 
+  dinoA = 0;
+  
+
+  gravity = 0.07;
+}else if (mouseClicked>1){
+   x1 = 900; // position it off-screen on the right
+  x2 = 1000;
+
+  // initial horizontal acceleration for cactus
+  a1 = -0.1;
+  a2 = -0.1;
+
+  // initial horizontal speed for cactus
+  s1 = -1;
+  s2 = -1;
+
+  // set dino initial vertical position
+  dinoY = 170;
+
+  // set dino initial speed
+  dinoS = 0;
+
+  // set dino initial acceleration
+  dinoA = 0;
+  
+  // set gravity 
+  gravity = 0.07;
+}}
 // respond to keypress
 void keyPressed(){
   if(dinoY==170){
   dinoA = -1;
   }
-  
 }
