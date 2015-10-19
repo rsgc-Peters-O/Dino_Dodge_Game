@@ -19,7 +19,10 @@ float line2;
 float a5;
 float a6;
 float b1;
+boolean isDead;
 int mouseClicked;
+int score = 0;
+int highscore = 0; // set score and highscore
 // this function runs once only
 void setup() {
   // draw the canvas 
@@ -74,10 +77,13 @@ void draw() {
   if (x1 < -25) {
     x1 = 900;
     s1 = -1;
+    score++;
   }
   if (x2 < -25) {
     x2 = 1000;
     s2 = -1;
+    score++;
+    highscore = max(score, highscore);
   }
   b1=170-dinoY;
   a6=x2-50;
@@ -93,6 +99,7 @@ void draw() {
   text("dinoA is " + dinoA, 150, 75);
   text("line1 is " + line1, 150, 100);
   text("line2 is " + line2, 150, 120);
+  text("Score " + score, 750, 10);
 
   // move the dino
   dinoA = dinoA + gravity; // changes acceleration based on gravity
@@ -125,6 +132,7 @@ void draw() {
 void mouseClicked() {
   mouseClicked++;
   if (mouseClicked==1) {
+    score = 0;
     x1 = 900; // position it off-screen on the right
     x2 = 1800;
 
