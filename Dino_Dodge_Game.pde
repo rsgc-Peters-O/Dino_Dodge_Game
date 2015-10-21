@@ -1,13 +1,23 @@
 //Name: Oscar Peters//
 
 // global variables (can be use everywhere below)
-float x1; // tracks horizontal position of first cactus 
-float x2; //  tracks horizontal position of second cactus
-float a1; // tracks acceleration of the first cactus 
-float s1; // tracks the speed of the first cactus
-float a2;// tracks acceleration of the second cactus
-float s2; // tracks the speed of the second cactus
 
+Cactus c1; 
+Cactus c2;
+
+//float x1; // tracks horizontal position of first cactus 
+//float x2; //  tracks horizontal position of second cactus
+//float a1; // tracks acceleration of the first cactus 
+//float s1; // tracks the speed of the first cactus
+//float a2;// tracks acceleration of the second cactus
+//float s2; // tracks the speed of the second cactus
+float x1; // tracks horizontal position of first cactus 
+float x2;
+float a2;
+float s2;
+float y1; //tracks vertical position of the first cactus 
+float s1; //  tracks horizontal position of second cactus
+float a1; // tracks acceleration of the first cactus 
 float dinoY; // tracks position of dino
 float dinoS; // tracks speed of dino
 float dinoA; // tracks acceleration of dino
@@ -23,12 +33,18 @@ boolean isDead;
 int mouseClicked;
 int score = 0;
 int highscore = 0; // set score and highscore
+
 // this function runs once only
 void setup() {
   // draw the canvas 
   size(800, 200);
 
+  c1 = new Cactus(900, -0.1, -1, 50);
+  c2=  new Cactus(900, -0.2, -1, 25);
+
+
   // set initial position of the cactus
+
   x1 = 900; // position it off-screen on the right
   x2 = 1800;
 
@@ -56,7 +72,11 @@ void setup() {
 // this function runs repeatedly 
 void draw() {
   // background clears each time the program loops
+
   background(255);
+
+  c1.update(gravity);
+  c2.update(gravity);
 
   // draw a circle at bottom right corner of the screen
   //       x    y   w   h
@@ -93,6 +113,7 @@ void draw() {
   c2=sq(a6)+sq(b1);
   line1=sqrt(c1);
   line2=sqrt(c2);
+
   // status updates
   text("dinoY is " + dinoY, 150, 25);
   text("dinoS is " + dinoS, 150, 50);
@@ -184,10 +205,9 @@ void mouseClicked() {
 // respond to keypress
 void keyPressed() {
 
-    if (key == ' ') {
-      if (dinoY==170) {
-        dinoA = -1;
-      }
+  if (key == ' ') {
+    if (dinoY==170) {
+      dinoA = -1;
     }
- 
+  }
 }
