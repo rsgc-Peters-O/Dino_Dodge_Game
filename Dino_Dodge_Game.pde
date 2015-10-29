@@ -155,11 +155,15 @@ void draw() {
 //}
 
 //// respond to keypress
-//void keyPressed() {
+void keyPressed() {
 
-//  if (key == ' ') {
-//    if (dinoY==170) {
-//      dinoA = -1;
-//    }
-//  }
-//}
+ //if (key == ' ') {
+ //  if (dinoY==170) {
+ //    dinoA = -1;
+ //  }
+ //}
+ 
+ if (d1.getY() == 170) {
+ d1.setA(-1);
+ }
+}

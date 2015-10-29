@@ -5,6 +5,7 @@ class Dino {
   float dinoS;
   float dinoA;
 
+
   //constructor
   Dino (float A_, float Y_, float S_) {
     dinoA= A_;
@@ -21,7 +22,7 @@ class Dino {
     // move the dino
     dinoA = dinoA + gravity; // changes acceleration based on gravity
     // status updates for dinosaur position
-    
+
     textSize(12);
     fill(0);
     text("dinoY is " + dinoY, 150, 25);
@@ -32,11 +33,26 @@ class Dino {
     dinoS = dinoS + dinoA; // change speed based on acceleration 
     dinoY = dinoY + dinoS; // change location based on speed
 
+
     // stop the dino if it hits the ground
     if (dinoY > 170) { // bottome of the screen (200) minus the radius 
       dinoA = 0;
       dinoS = 0;
       dinoY = 170;
     }
+  }
+
+  // getY
+  // Purpose: an accessor method; lets us find out where the dino is (vertically)
+  float getY() {
+    return dinoY;
+  }
+
+  // setA
+  //
+  // Purpose: a mutator method; lets the acceleration for the dinosaur be set
+  //          from outside the class
+  void setA(float newA_) {
+    dinoA = newA_;
   }
 }
