@@ -6,6 +6,7 @@ class Cactus {
   float a1; // tracks acceleration of the first cactus 
 
 
+
   //constructor (like setup - run s once)
   Cactus (float x_, float y_, float a_, float s_) {
     x1= x_;
@@ -17,17 +18,28 @@ class Cactus {
   //update draws things related to cactus
   void update (float gravity) {
     //make the cactus move
+    // change the speed
+    s1 = s1 + a1;
 
-    // set initial position of the cactus
-    x1 = 900; // position it off-screen on the right
-    x2 = 1800;
+    // create the appearence of moving by changing the x position
+    x1= x1 + s1;
 
-    // initial horizontal acceleration for cactus
-    a1 = -0.1;
-    a2 = -0.1;
+    // put the cactus back on right edge if it goes off left edge
+    if (x1 < -25) {
+      x1 = 900;
+      s1 = -1;
+//      score++;
+    }
+    
+    // draw the cactus
+    ellipse(x1, 170, 50, 50);
+    
+  }
 
-    // initial horizontal speed for cactus
-    s1 = -1;
-    s2 = -1;
+  //getX
+  //Purpose: to return the x position of the cactus
+  float getX() {
+
+    return x1;
   }
 }
