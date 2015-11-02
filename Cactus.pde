@@ -44,13 +44,13 @@ class Cactus {
 
     return x1;
   }
-}
+
 
 // getX
 // Purpose: an accessor method; lets us find out where the cactus is (horizontally)
-float getX() {
-  return x1;
-}
+//float getX() {
+//  return x1;
+//}
 
 // getY
 //
@@ -63,4 +63,6 @@ float getY() {
 // Purpose: an accessor method; lets us find out the cactus radius
 float getR() {
   return r1;
+}
+
 }
